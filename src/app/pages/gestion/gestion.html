@@ -1,0 +1,15 @@
+<div class="gestion">
+  <h1>Gestion</h1>
+
+  @if (contact) {
+    <div class="carte">
+      <p><b>Prénom :</b> {{ contact.prenom }}</p>
+      <p><b>Nom :</b> {{ contact.nom }}</p>
+      <p><b>Âge :</b> {{ contact.age || 'Non renseigné' }}</p>
+      <p><b>Email :</b> {{ contact.email || 'Non renseigné' }}</p>
+      <p><b>Commentaire :</b> {{ contact.commentaire }}</p>
+    </div>
+  } @else {
+    <p class="erreur404">404 not found</p>
+  }
+</div>

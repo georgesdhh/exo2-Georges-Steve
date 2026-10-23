@@ -1,0 +1,20 @@
+<div class="liste">
+  <h1>Films d'animation</h1>
+
+  <ul>
+    @for (film of films; track film.titre) {
+      <li>
+        <a href="javascript:void(0)" (click)="choisirFilm(film)" [class.choisi]="film == filmChoisi">{{ film.titre }}</a>
+      </li>
+    }
+  </ul>
+
+  @if (filmChoisi) {
+    <div class="detail">
+      <h2>{{ filmChoisi.titre }}</h2>
+      <img [src]="filmChoisi.affiche" [alt]="filmChoisi.titre">
+    </div>
+  } @else {
+    <p class="info">Clique sur un film pour voir son affiche.</p>
+  }
+</div>

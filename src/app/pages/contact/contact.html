@@ -1,0 +1,32 @@
+<div class="contact">
+  <h1>Contact</h1>
+
+  <form #formulaire="ngForm" (ngSubmit)="envoyer()">
+    <label>Prénom *</label>
+    <input type="text" name="prenom" [(ngModel)]="prenom" required>
+
+    <label>Nom *</label>
+    <input type="text" name="nom" [(ngModel)]="nom" required>
+
+    <label>Âge</label>
+    <input type="number" name="age" [(ngModel)]="age">
+
+    <div class="ligne">
+      <input type="checkbox" name="hide" [(ngModel)]="hide" (change)="changerHide()">
+      <span>Hide</span>
+    </div>
+
+    @if (!hide) {
+      <label>Email *</label>
+      <input type="text" name="email" [(ngModel)]="email" required pattern=".*@.*" #champEmail="ngModel">
+      @if (champEmail.touched && champEmail.errors?.['pattern']) {
+        <span class="erreur">L'email doit contenir un @</span>
+      }
+    }
+
+    <label>Commentaire *</label>
+    <textarea name="commentaire" rows="4" [(ngModel)]="commentaire" required></textarea>
+
+    <button type="submit" [disabled]="formulaire.invalid">Envoyer</button>
+  </form>
+</div>
